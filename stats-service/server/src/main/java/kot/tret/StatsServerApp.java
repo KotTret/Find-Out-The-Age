@@ -2,15 +2,10 @@ package kot.tret;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-public class BackApplication {
-
+public class StatsServerApp {
     public static void main(String[] args) {
-        SpringApplication.run(BackApplication.class, args);
-
+        SpringApplication.run(StatsServerApp.class, args);
     }
-
 }

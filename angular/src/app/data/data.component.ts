@@ -12,6 +12,10 @@ export class DataComponent implements OnInit {
 
   name = "";
   age = 0;
+  popularName = "";
+  count = 0;
+  oldName = "";
+  oldAge = 0;
 
   constructor(private httpClient: HttpClient,
               private router: Router,
@@ -26,20 +30,6 @@ export class DataComponent implements OnInit {
     });
 
 
-/*    this.httpClient.get<any>(environment.backendURL).subscribe(
-      {
-        next: ((response: any) => {
-
-          console.log(response);
-          console.log(response.name);
-        }),
-
-        error: (error => {
-          console.log(error)
-        })
-      }
-    );
-    */
     const data = {name: this.name};
     const body = JSON.stringify(data);
 
@@ -54,10 +44,12 @@ export class DataComponent implements OnInit {
           console.log(response);
           console.log(response);
 
-          this.age =response.age;
+          this.age = response.age;
         }),
 
         error: (error => {
+          this.name = "Error: Имя указано неверно";
+          this.age = -1;
           console.log(error)
         })
       }
@@ -71,6 +63,23 @@ export class DataComponent implements OnInit {
 
 
   requestBackend() {
+    this.httpClient.get<any>(environment.backendURL + "/stats", {params:{'name': this.name}}).subscribe(
+      {
+        next: ((response: any) => {
+
+          console.log(response);
+          this.popularName = response.popularName;
+          this.count = response.count;
+          this.oldName = response.oldName;
+          this.oldAge = response.oldAge;
+
+        }),
+
+        error: (error => {
+          console.log(error)
+        })
+      }
+    );
 
   }
 }

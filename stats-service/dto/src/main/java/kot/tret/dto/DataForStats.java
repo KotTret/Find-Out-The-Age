@@ -1,6 +1,5 @@
 package kot.tret.dto;
 
-
 import lombok.*;
 
 @Getter
@@ -8,7 +7,9 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DataResult {
+public class DataForStats {
+
+    private String name;
 
     private Short age;
 }

@@ -12,4 +12,8 @@ public class Stats {
     private Integer count;
 
     private String popularName;
+
+    private String oldName;
+
+    private Integer oldAge;
 }
